@@ -1,0 +1,114 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Benvenuti a casa nostra · Torino</title><style>
+:root{--bg:#fbf7f2;--card:#fff;--ink:#2e2620;--muted:#7a6f64;--brand:#a85a2e;--brand-dark:#7a4a2b;--accent:#e8d6c3;--line:#ece2d6;--shadow:0 10px 32px rgba(120,80,40,.10);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top,#fffaf1 0,#fbf7f2 45%,#f8f1e8 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62}
+a{color:var(--brand);font-weight:800}.top{position:sticky;top:0;z-index:20;background:rgba(251,247,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.topin{max-width:1080px;margin:auto;padding:10px 18px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900;color:var(--brand-dark)}.langs a{padding:7px 10px;border-radius:99px;text-decoration:none;color:var(--brand-dark)}.langs a.active{background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.08)}
+.hero{max-width:1080px;margin:auto;text-align:center;padding:42px 18px 24px}.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);font-weight:900}.hero h1{font-size:clamp(3rem,8vw,5.4rem);line-height:.96;letter-spacing:-.07em;margin:14px 0;color:var(--brand-dark)}.hero p{font-size:clamp(1.05rem,2.3vw,1.42rem);color:var(--muted);max-width:760px;margin:0 auto 18px}.pill{display:inline-block;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:99px;padding:11px 18px;text-decoration:none;color:var(--ink);font-weight:900}
+nav.quick{max-width:1080px;margin:0 auto 22px;padding:0 18px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}nav.quick a{text-decoration:none;background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:20px;padding:14px 10px;color:var(--brand-dark);box-shadow:var(--shadow);text-align:center;font-weight:900}
+main{max-width:1080px;margin:auto;padding:0 18px 60px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;margin:18px 0;box-shadow:var(--shadow)}h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.055em;line-height:1.05;color:#b66a00;margin:0 0 18px}.lead{font-size:1.12rem;color:var(--ink)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.item{background:#fff8e8;border:1px solid #f0dfba;border-radius:18px;padding:16px}.item strong{display:block;color:var(--brand-dark);font-size:1.05rem;margin-bottom:4px}.warn{background:#fff1f1;border:1px solid #ffd0d0;border-left:6px solid #d93030;border-radius:18px;padding:15px;font-weight:800;color:#8a1f1f;margin-top:12px}
+.btn{display:inline-block;background:var(--brand);color:#fff!important;text-decoration:none;border-radius:15px;padding:13px 18px;margin:8px 8px 0 0;font-weight:900}.btn.secondary{background:var(--brand-dark)}
+details{background:#fffdf8;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:10px 0}summary{cursor:pointer;list-style:none;padding:16px 18px;display:flex;justify-content:space-between;gap:12px;color:var(--brand-dark);font-weight:900}summary::-webkit-details-marker{display:none}.body{padding:0 18px 18px;color:var(--ink)}
+.placegroup h3{color:var(--brand-dark);margin:18px 0 8px}.place{display:grid;grid-template-columns:1fr auto;gap:12px;border-bottom:1px solid var(--line);padding:11px 0}.place:last-child{border-bottom:0}.place span{color:var(--muted)}footer{text-align:center;color:var(--muted);padding:28px 18px 50px}
+@media(max-width:800px){nav.quick{grid-template-columns:repeat(2,1fr)}.grid,.grid3{grid-template-columns:1fr}.hero h1{font-size:clamp(2.7rem,13vw,4rem)}.card{padding:22px 18px}.place{grid-template-columns:1fr}}
+
+/* ===== v12 refinements ===== */
+.photo-strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-top:18px}
+.photo-strip img{width:100%;height:230px;object-fit:cover;border-radius:22px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(120,80,40,.08)}
+.wifi-card{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.wifi-card img{width:170px;height:170px;object-fit:contain;background:#fff;border-radius:18px;border:1px solid var(--line);padding:10px}
+.rules-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.rule-open{background:#fffdf8;border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.rule-open strong{display:block;color:var(--brand-dark);font-size:1.05rem;margin-bottom:4px}
+.rule-open span{display:block;color:var(--ink);line-height:1.45}
+.parking-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.parking-list .item a{font-weight:900}
+@media(max-width:800px){
+  .photo-strip{grid-template-columns:1fr 1fr}
+  .photo-strip img:first-child{grid-column:1/-1}
+  .wifi-card{grid-template-columns:1fr}
+  .rules-list,.parking-list{grid-template-columns:1fr}
+}
+
+
+/* ===== Alarm & keys section ===== */
+.alarm-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.alarm-step{background:#fff8e8;border:1px solid #f0dfba;border-radius:18px;padding:16px}
+.alarm-step strong{display:block;color:var(--brand-dark);font-size:1.05rem;margin-bottom:4px}
+.alarm-image{width:100%;max-width:520px;border-radius:20px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(120,80,40,.08);background:#fff}
+.alarm-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+@media(max-width:800px){.alarm-steps,.alarm-layout{grid-template-columns:1fr}.alarm-image{max-width:100%}}
+
+
+/* ===== v11 plus photos / parking / alarm links ===== */
+.hero-photo{max-width:1080px;margin:0 auto 24px;padding:0 18px}
+.hero-photo img{width:100%;height:min(56vw,540px);object-fit:cover;border-radius:30px;border:1px solid var(--line);box-shadow:0 18px 48px rgba(120,80,40,.16)}
+.family-strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-top:18px}
+.family-strip img{width:100%;height:230px;object-fit:cover;border-radius:22px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(120,80,40,.08)}
+.alarm-image{max-width:420px}
+@media(max-width:800px){.family-strip{grid-template-columns:1fr 1fr}.family-strip img:first-child{grid-column:1/-1}.hero-photo img{height:62vw}}
+
+</style></head><body>
+<header class="top"><div class="topin"><div class="brand">Corso Francia 2 TER · Torino</div><div class="langs"><a class='active' href='it.html'>Italiano</a><a class='' href='en.html'>English</a><a class='' href='fr.html'>Français</a></div></div></header>
+<section class="hero"><div class="kicker">HomeExchange · Torino</div><h1>Benvenuti a casa nostra</h1><p>Una guida semplice e accogliente per vivere bene la nostra casa e la nostra Torino.</p><a class="pill" href="https://maps.google.com/?q=Corso+Francia+2+ter,+10143+Torino" target="_blank">Corso Francia 2 TER, 10143 Torino</a></section>
+<nav class="quick"><a href='#before'>Arrivo</a><a href='#zuki'>Zuki</a><a href='#alarm'>Antifurto</a><a href='#house'>Casa</a><a href='#cleaning'>Pulizie</a><a href='#nearby'>Luoghi</a><a href='#contacts'>Contatti</a></nav>
+<main>
+<section class="card" id="welcome"><h2>Benvenuti</h2><p class="lead">Grazie per aver scelto la nostra casa per il vostro soggiorno a Torino. Siamo Andrea e Bianca e viaggiamo con i nostri due bambini: Edoardo (2018) e Filippo (2025). Amiamo viaggiare in famiglia, scoprire luoghi nuovi in modo autentico e vivere le città come se fossimo a casa. La nostra casa è un attico luminoso su due livelli nel quartiere Cit Turin: molti ospiti ci raccontano quanto si stia bene qui e quanto sia speciale la vista aperta sulla città e sulle Alpi.</p></section>
+
+<section class="card" id="before"><h2>Prima dell&#x27;arrivo</h2>
+<div class="grid">
+<div class="item"><strong>Invio documenti</strong><span>La legge italiana richiede la registrazione degli ospiti prima dell’arrivo. Vi chiediamo gentilmente di inviarci via WhatsApp la carta d’identità fronte/retro oppure la pagina principale del passaporto, più eventuale visto o permesso di soggiorno se applicabile.</span><br><a class="btn" href="https://wa.me/393886478786?text=Ciao%20Andrea%2C%20ti%20invio%20i%20documenti%20per%20il%20soggiorno%20a%20Torino." target="_blank">Invia documenti via WhatsApp</a></div>
+<div class="item wifi-card"><div><strong>Wi‑Fi</strong><span>Scansiona il QR code per collegarti direttamente alla rete, oppure inserisci manualmente SSID e password.</span><br><br><span>SSID: <b>Bonelli_Guest</b><br>Password: <b>welcome!</b></span></div><img src="assets/wifi_qr.png" alt="Wi-Fi QR code"></div>
+<div class="item"><strong>Manuali elettrodomestici</strong><span>Qui trovate i manuali di aria condizionata, lavastoviglie, macchina del caffè, piano cottura, lavatrice e asciugatrice.</span><br><a class="btn secondary" href="https://drive.google.com/open?id=1UO9QbuPkz_UTlrY5wyl5FqaQ_55aI1Rx&usp=drive_fs" target="_blank">Apri manuali</a></div>
+
+</div>
+
+</section>
+
+<section class="card" id="parking"><h2>Come arrivare e parcheggiare</h2><p class="lead">L’appartamento è in Corso Francia 2 TER. Sotto casa trovate parcheggi su strada; per soste più lunghe o auto con targa straniera consigliamo di valutare anche un parcheggio custodito.</p><div class="parking-list"><div class="item"><strong>Indirizzo casa</strong><span><a href="https://maps.google.com/?q=Corso+Francia+2+ter,+10143+Torino" target="_blank">Corso Francia 2 TER, Torino</a></span></div><div class="item"><strong>Parcheggio su strada</strong><span>A pagamento dal lunedì al sabato; domenica gratuito.</span></div><div class="item"><strong>Tariffe</strong><span>1,70 €/ora su Corso Francia · 1,50 €/ora nelle vie interne.</span></div><div class="item"><strong>Voucher giornaliero</strong><span>10–12€ presso tabaccherie/edicole. Più vicino: <a href="https://maps.app.goo.gl/fhqzjJNwwcP6HzX79" target="_blank">Rivendita biglietteria, C.so Francia 6/D</a>.</span></div><div class="item"><strong>Porta Susa</strong><span>8–10 minuti a piedi.</span></div><div class="item"><strong>Aeroporto</strong><span>Torino Caselle → Porta Susa circa 35–40 minuti.</span></div></div><div class="warn">Per auto con targa straniera o soste di più giorni, valutate un parcheggio custodito o coperto. Non lasciate mai in auto oggetti di valore, borse, zaini, computer, fotocamere o documenti visibili.</div></section>
+
+
+
+
+<section class="card" id="guarded-parking">
+  <h2>Parcheggi custoditi consigliati</h2>
+  <p class="lead">Per auto con targa straniera o soste di più giorni, consigliamo di valutare un parcheggio custodito o coperto.</p>
+  <div class="parking-list">
+    <div class="item"><strong>Parcheggio Corso Bolzano – Porta Susa</strong><span>Vicino alla stazione Porta Susa.</span><br><a href="https://www.bestinparking.com/it/it/garage/parcheggio-corso-bolzano-stazione-porta-susa" target="_blank">Apri sito</a></div>
+    <div class="item"><strong>FS Park Torino Porta Susa</strong><span>Parcheggio della stazione Porta Susa.</span><br><a href="https://www.fspark.it/it/parcheggi/nord-ovest-italia/torino-porta-susa.html" target="_blank">Apri sito</a></div>
+    <div class="item"><strong>Autorimessa Susa</strong><span>Autorimessa con soste giornaliere o settimanali su prenotazione.</span><br><a href="https://sites.google.com/view/autorimessa-susa-torino/home" target="_blank">Apri sito</a></div>
+    <div class="item"><strong>MyParking Porta Susa</strong><span>Motore di ricerca e prenotazione parcheggi in zona.</span><br><a href="https://www.myparking.it/parcheggio_stazione_susa_torino.php" target="_blank">Apri sito</a></div>
+  </div>
+  <div class="warn">Non lasciate mai in auto oggetti di valore, borse, zaini, computer, fotocamere o documenti visibili.</div>
+</section>
+
+
+<section class="card" id="alarm">
+  <h2>Antifurto e chiavi</h2>
+  <div class="alarm-layout">
+    <div>
+      <p class="lead">L’impianto antifurto protegge l’appartamento e il suo contenuto. Deve essere inserito ogni volta che lasciate la casa incustodita. Prima di inserirlo, verificate che tutte le finestre siano ben chiuse.</p>
+      <div class="alarm-steps">
+        <div class="alarm-step"><strong>1. Chiudere la porta</strong><span>Uscite dall’appartamento e chiudete bene la porta di ingresso.</span></div>
+        <div class="alarm-step"><strong>2. Attivare la tastiera</strong><span>Premete un tasto qualsiasi per accendere la tastiera.</span></div>
+        <div class="alarm-step"><strong>3. Avvicinare il TAG NFC</strong><span>Avvicinate il TAG collegato alle chiavi nella zona in alto sopra i numeri.</span></div>
+        <div class="alarm-step"><strong>4. Inserire o disinserire</strong><span>Premere <strong>9</strong> per inserire l’antifurto. Premere <strong>10</strong> per disinserirlo. Quando l’antifurto viene inserito, la porta si chiude automaticamente a chiave.</span></div>
+      </div>
+      <p><strong>Luci sulla tastiera:</strong> luce 1 = allarme inserito; luce 2 = impianto disinserito.</p>
+      <p><strong>Chiavi:</strong> vi lasceremo un mazzo di chiavi all’ingresso. Se non saremo presenti al check-in, vi apriremo da remoto. Al check-out potete lasciare le chiavi nel contenitore all’entrata o sul tavolo del soggiorno; una volta usciti, inserite il codice o avvisateci così possiamo inserire l’antifurto da remoto.</p>
+      <a class="btn secondary" href="https://wa.me/393886478786" target="_blank">Contatta Andrea su WhatsApp</a><a class="btn" href="https://drive.google.com/open?id=1eLZYOvGVguo-Xwpo9TpwbmWebnuQ97bM&usp=drive_fs" target="_blank">Guarda video antifurto</a>
+    </div>
+    <div><img class="alarm-image" src="assets/alarm_keypad.png" alt="Istruzioni antifurto"></div>
+  </div>
+</section>
+<section class="card" id="zuki"><h2>Zuki rimane con voi</h2><p class="lead">Zuki è il nostro Maine Coon, molto socievole e affettuoso. Durante il vostro soggiorno rimarrà in casa con voi e vi ringraziamo davvero per prendervi cura di lui.</p>
+<div class="grid3"><div class="item"><strong>Water</strong><span>Cambiare l’acqua una volta al giorno.</span></div><div class="item"><strong>Food</strong><span>Fornire le crocchette una volta al giorno.</span></div><div class="item"><strong>Litter box</strong><span>Per soggiorni superiori a 2 giorni, pulire la lettiera almeno ogni 2 giorni.</span></div></div>
+<div class="warn">Importante: fate attenzione a non farlo uscire sul balcone lato strada. Quel balcone non ha le protezioni e Zuki tende ad arrampicarsi sul corrimano.</div>
+<details open><summary><span>Tables and fragile objects</span><span>▾</span></summary><div class="body">Zuki è curioso e si diverte a far cadere gli oggetti. Vi chiediamo di non lasciare sul tavolo bicchieri, tazze, bottiglie aperte o oggetti fragili.</div></details>
+<details><summary><span>Night routine</span><span>▾</span></summary><div class="body">Noi di notte di solito lo chiudiamo nel bagno, dove ha accesso al balcone: è abituato e lo facciamo per evitare di essere svegliati da lui. Naturalmente siete liberi di fare come preferite.</div></details>
+<p><a class="btn secondary" href="https://drive.google.com/open?id=1YAGi1g0-J9ekbWzxZcuETuKKaUaNEaXg&usp=drive_fs" target="_blank">Guarda dove sono le crocchette</a></p></section>
+
+<section class="card" id="house"><h2>Regole della casa</h2><p class="lead">Le regole principali sono qui sotto, sempre visibili e senza tendine.</p><div class="rules-list"><div class="rule-open"><strong>Fumo</strong><span>Vietato fumare in appartamento e sui balconi, incluse sigarette elettroniche. Si può fumare solo in strada.</span></div><div class="rule-open"><strong>Scarpe in casa</strong><span>Per proteggere parquet e pulizia, vi chiediamo di non indossare scarpe in casa. Pantofole o calzini sono perfetti.</span></div><div class="rule-open"><strong>Silenzio</strong><span>Riposo notturno 22:00–7:00 e siesta 13:00–15:00.</span></div><div class="rule-open"><strong>Cucina</strong><span>Potete cucinare: fate attenzione al parquet, soprattutto con olio e fritture. Usate un tappeto per proteggere il pavimento.</span></div><div class="rule-open"><strong>TV e streaming</strong><span>Netflix, Prime Video e altre app sono disponibili. Se usate account personali, ricordate il logout prima del check-out.</span></div><div class="rule-open"><strong>Raccolta differenziata</strong><span>Carta/plastica/vetro-indifferenziata sul balcone vicino cucina; organico sotto lavello. Prima del check-out buttate almeno l’organico.</span></div><div class="rule-open"><strong>Lavatrice e asciugatrice</strong><span>Non utilizzare senza chiederci prima via messaggio.</span></div><div class="rule-open"><strong>Acqua calda</strong><span>Se va via la corrente, uscire sul balcone vicino al bagno e premere ON/OFF sul boiler.</span></div><div class="rule-open"><strong>Impianto elettrico</strong><span>Se salta la corrente, il contatore è nell’armadio vicino all’ingresso: riarmare l’interruttore.</span></div><div class="rule-open"><strong>Cura della casa</strong><span>Quando uscite: chiudere finestre e porte, spegnere luci/clima e inserire l’antifurto.</span></div><div class="rule-open"><strong>Danni</strong><span>Se qualcosa si rompe, avvisateci subito con foto e descrizione via WhatsApp o HomeExchange.</span></div></div></section>
+<section class="card" id="cleaning"><h2>Pulizie e biancheria</h2><p class="lead">Per gli scambi GuestPoints chiediamo un contributo pulizie di 30–80€, in funzione della durata del soggiorno e del numero di ospiti. Se desiderate utilizzare la nostra biancheria: 25€ per ogni set matrimoniale e 20€ per ogni set singolo. Il contributo può essere lasciato sul tavolo da pranzo prima del check-out.</p></section>
+<section class="card" id="nearby"><h2>Servizi e luoghi vicini</h2><p class='lead'>Cit Turin è uno dei quartieri più eleganti e piacevoli di Torino. A pochi minuti a piedi trovate supermercati, farmacia, caffè, ristoranti, metropolitana e la stazione Porta Susa. Qui trovate alcuni dei nostri posti preferiti.</p><div class='placegroup'><h3>Servizi</h3><div class='place'><div><strong>Carrefour Market 24/7</strong><br><span>Via S. Donato 11</span></div><a href='https://www.google.com/maps/search/?api=1&query=Carrefour+Market+Via+San+Donato+11+Torino' target='_blank'>Maps</a></div><div class='place'><div><strong>Farmacia</strong><br><span>C.so Francia 1bis</span></div><a href='https://www.google.com/maps/search/?api=1&query=Farmacia+Corso+Francia+1bis+Torino' target='_blank'>Maps</a></div></div><div class='placegroup'><h3>Caffè e colazioni</h3><div class='place'><div><strong>Pastarell</strong><br><span>Piazza XVIII Dicembre 3</span></div><a href='https://www.google.com/maps/search/?api=1&query=Pastarell+Piazza+XVIII+Dicembre+3+Torino' target='_blank'>Maps</a></div><div class='place'><div><strong>Bar Sicily</strong><br><span>Via Luigi Cibrario 17</span></div><a href='https://www.google.com/maps/search/?api=1&query=Bar+Sicily+Via+Luigi+Cibrario+17+Torino' target='_blank'>Maps</a></div></div><div class='placegroup'><h3>Ristoranti</h3><div class='place'><div><strong>Pizzeria Wemà</strong><br><span>Via Giustino Fortunato 4e</span></div><a href='https://www.google.com/maps/search/?api=1&query=Pizzeria+Wema+Via+Giustino+Fortunato+4e+Torino' target='_blank'>Maps</a></div><div class='place'><div><strong>Pizzeria da Michi</strong><br><span>Via S. Donato 38/G</span></div><a href='https://www.google.com/maps/search/?api=1&query=Pizzeria+da+Michi+Via+San+Donato+38G+Torino' target='_blank'>Maps</a></div><div class='place'><div><strong>Enoteca Parlapà</strong><br><span>Corso Principe Eugenio 17</span></div><a href='https://www.google.com/maps/search/?api=1&query=Enoteca+Parlapa+Corso+Principe+Eugenio+17+Torino' target='_blank'>Maps</a></div><div class='place'><div><strong>Piano35</strong><br><span>C.so Inghilterra</span></div><a href='https://www.google.com/maps/search/?api=1&query=Piano35+Torino' target='_blank'>Maps</a></div></div><div class='placegroup'><h3>Gelaterie</h3><div class='place'><div><strong>Gelateria Aria</strong><br><span>Corso Francia 27, Torino</span></div><a href='https://maps.app.goo.gl/3EJ46zovzGEmPDau5' target='_blank'>Maps</a></div><div class='place'><div><strong>Alberto Marchetti</strong><br><span>Via Principi d&#x27;Acaja 65/D</span></div><a href='https://www.google.com/maps/search/?api=1&query=Alberto+Marchetti+Via+Principi+d%27Acaja+65+Torino' target='_blank'>Maps</a></div></div><div class='placegroup'><h3>Informazioni turistiche</h3><div class='place'><div><strong>Turismo Torino</strong><br><span>Sito ufficiale con musei, eventi, itinerari e card turistiche.</span></div><a href='https://turismotorino.org/it' target='_blank'>Apri</a></div><div class='place'><div><strong>Abbonamento Musei</strong><br><span>Informazioni su musei e card.</span></div><a href='https://abbonamentomusei.it/' target='_blank'>Apri</a></div></div></section>
+<section class="card" id="contacts"><h2>Contatti</h2><div class="grid"><div class="item"><strong>Andrea</strong><span>+39 388 6478786</span><br><a class="btn" href="tel:+393886478786">Call</a><a class="btn secondary" href="https://wa.me/393886478786" target="_blank">WhatsApp</a></div><div class="item"><strong>Bianca</strong><span>+39 328 3050452</span><br><a class="btn secondary" href="https://wa.me/393283050452" target="_blank">WhatsApp</a><a class="btn" href="tel:+393283050452">Call</a></div></div></section>
+</main><footer>Grazie per prendervi cura della nostra casa come fareste con la vostra. Vi auguriamo uno splendido soggiorno a Torino.<br><strong>Andrea, Bianca, Edoardo, Filippo e Zuki</strong></footer>
+</body></html>
