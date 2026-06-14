@@ -1,1 +1,924 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casa Bonelli Torino</title><style>body{margin:0;background:#fbf7f2;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;display:grid;min-height:100vh;place-items:center;color:#2e2620}.box{background:white;border:1px solid #ece2d6;border-radius:28px;padding:36px;text-align:center;box-shadow:0 10px 32px rgba(120,80,40,.12)}h1{font-size:clamp(2.5rem,8vw,4.8rem);letter-spacing:-.06em;color:#7a4a2b}a{display:inline-block;background:#a85a2e;color:white;text-decoration:none;border-radius:999px;padding:14px 20px;margin:8px;font-weight:900}</style></head><body><div class="box"><h1>Benvenuti a casa</h1><p>Welcome home · Bienvenue chez nous</p><a href="it.html">Italiano</a><a href="en.html">English</a><a href="fr.html">Français</a></div></body></html>
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benvenuto a casa | Corso Francia 2 TER, Torino</title>
+  <meta name="description" content="Guest portal per ospiti HomeExchange – Torino, Corso Francia 2 TER">
+  <style>
+    :root {
+      --orange:#f2a000; --blue:#3769a6; --red:#d93030; --ink:#1f2937;
+      --muted:#6b7280; --bg:#fffaf0; --card:#ffffff; --line:#eadcc2;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color:var(--ink); background:var(--bg); line-height:1.55; }
+    a { color:var(--blue); }
+
+    /* ── Language switching ── */
+    body.lang-it .en, body.lang-it .fr { display:none !important; }
+    body.lang-en .it, body.lang-en .fr { display:none !important; }
+    body.lang-fr .it, body.lang-fr .en { display:none !important; }
+
+    /* ── Lang bar ── */
+    .lang-bar { position:sticky; top:0; z-index:30; background:#1f2937; display:flex; justify-content:center; gap:6px; padding:8px 18px; }
+    .lang-bar button { border:none; cursor:pointer; padding:6px 16px; border-radius:999px; font-size:.93rem; font-weight:700; background:#374151; color:#d1d5db; transition:.15s; }
+    .lang-bar button.active, .lang-bar button:hover { background:var(--orange); color:#1f2937; }
+
+    /* ── Header ── */
+    header { background:linear-gradient(135deg,#fff 0%,#fff6df 55%,#ffe2a3 100%); padding:28px 18px 34px; border-bottom:1px solid var(--line); }
+    .wrap { max-width:1050px; margin:0 auto; }
+    .hero { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center; }
+    h1 { font-size:clamp(2rem,6vw,4.4rem); line-height:1.02; margin:.1em 0; letter-spacing:-.04em; }
+    h2 { font-size:clamp(1.3rem,3vw,2rem); margin:0 0 10px; color:#b86d00; }
+    h3 { margin:0 0 8px; font-size:1.1rem; color:#9a5b00; }
+    .subtitle { color:var(--blue); font-weight:700; margin-bottom:14px; }
+    .hero img { width:100%; border-radius:22px; box-shadow:0 15px 40px rgba(0,0,0,.12); }
+
+    /* ── Nav ── */
+    nav { position:sticky; top:41px; z-index:20; background:rgba(255,255,255,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); overflow-x:auto; white-space:nowrap; }
+    nav .wrap { display:flex; gap:8px; padding:10px 18px; }
+    nav a { text-decoration:none; color:#374151; padding:7px 12px; border-radius:999px; background:#fff7e2; border:1px solid #f2dfb3; font-size:.9rem; flex-shrink:0; }
+    nav a:hover { background:var(--orange); color:#fff; }
+
+    /* ── Layout ── */
+    main { padding:24px 18px 60px; }
+    section { margin:0 auto 22px; max-width:1050px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px; box-shadow:0 6px 20px rgba(80,50,0,.06); }
+    .important { border-left:6px solid var(--orange); }
+    .danger   { border-left:6px solid var(--red); }
+    .ok       { border-left:6px solid #18a058; }
+    .info     { border-left:6px solid var(--blue); }
+
+    /* ── Misc ── */
+    .pill { display:inline-block; padding:5px 10px; border-radius:999px; background:#fff1c7; color:#7c4a00; font-weight:700; font-size:.85rem; margin-right:6px; }
+    ul, ol { padding-left:1.3rem; margin:.4rem 0; }
+    li { margin:.25rem 0; }
+    .qr { width:110px; height:110px; object-fit:contain; border:1px solid #eee; background:#fff; border-radius:10px; padding:6px; }
+    .bigbtn { display:inline-block; margin:6px 8px 6px 0; padding:11px 16px; border-radius:14px; background:var(--blue); color:#fff; text-decoration:none; font-weight:700; font-size:.95rem; }
+    .orangebtn { background:var(--orange); color:#321; }
+    .redbtn { background:var(--red); }
+    .greenbtn { background:#18a058; }
+    .small { font-size:.88rem; color:var(--muted); }
+    .table { width:100%; border-collapse:collapse; }
+    .table td,.table th { border-bottom:1px solid #eee; padding:8px 6px; text-align:left; vertical-align:top; }
+    .photo { width:100%; border-radius:16px; border:1px solid var(--line); }
+    video { width:100%; border-radius:16px; border:1px solid var(--line); background:#000; display:block; }
+    details { background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 14px; margin:10px 0; }
+    summary { cursor:pointer; font-weight:700; color:#7c4a00; }
+    .icon { font-size:1.4rem; margin-right:6px; }
+    .badge { display:inline-block; background:#fff1c7; border:1px solid #f2dfb3; border-radius:8px; padding:4px 10px; font-size:.85rem; font-weight:700; color:#7c4a00; margin:2px 4px 2px 0; }
+    footer { text-align:center; color:var(--muted); padding:28px 18px; border-top:1px solid var(--line); background:#fff; }
+
+    @media (max-width:760px) {
+      .hero,.grid,.grid3 { grid-template-columns:1fr; }
+      nav { top:41px; }
+      nav .wrap { padding-left:10px; }
+      .card { padding:14px; }
+    }
+  </style>
+</head>
+<body class="lang-it">
+
+<!-- ── Language bar ── -->
+<div class="lang-bar">
+  <button onclick="setLang('it')" id="btn-it" class="active">🇮🇹 Italiano</button>
+  <button onclick="setLang('en')" id="btn-en">🇬🇧 English</button>
+  <button onclick="setLang('fr')" id="btn-fr">🇫🇷 Français</button>
+</div>
+
+<!-- ── Header ── -->
+<header>
+  <div class="wrap hero">
+    <div>
+      <span class="pill">HomeExchange</span><span class="pill">Torino</span>
+      <h1>
+        <span class="it">Benvenuto a casa</span>
+        <span class="en">Welcome home</span>
+        <span class="fr">Bienvenue chez nous</span>
+      </h1>
+      <div class="subtitle">
+        <span class="it">Corso Francia 2 TER, 10143 Torino</span>
+        <span class="en">Corso Francia 2 TER, 10143 Turin</span>
+        <span class="fr">Corso Francia 2 TER, 10143 Turin</span>
+      </div>
+      <p>
+        <span class="it"><strong>Sentitevi a casa.</strong> Siamo lieti di avervi qui!</span>
+        <span class="en"><strong>Make yourself at home.</strong> We're glad to have you here!</span>
+        <span class="fr"><strong>Faites comme chez vous.</strong> Nous sommes ravis de vous accueillir !</span>
+      </p>
+      <a class="bigbtn orangebtn" href="https://www.google.com/maps/search/?api=1&query=Corso+Francia+2+TER,+10143+Torino" target="_blank" rel="noopener">
+        <span class="it">Apri su Google Maps</span>
+        <span class="en">Open on Google Maps</span>
+        <span class="fr">Ouvrir sur Google Maps</span>
+      </a>
+    </div>
+    <img src="assets/image2.jpeg" alt="Soggiorno della casa">
+  </div>
+</header>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="wrap">
+    <a href="#contatti">
+      <span class="it">Contatti</span><span class="en">Contacts</span><span class="fr">Contacts</span>
+    </a>
+    <a href="#wifi">Wi‑Fi</a>
+    <a href="#accesso">
+      <span class="it">Accesso &amp; antifurto</span><span class="en">Access &amp; alarm</span><span class="fr">Accès &amp; alarme</span>
+    </a>
+    <a href="#regole">
+      <span class="it">Regole</span><span class="en">Rules</span><span class="fr">Règles</span>
+    </a>
+    <a href="#cucina">
+      <span class="it">Cucina &amp; casa</span><span class="en">Kitchen &amp; home</span><span class="fr">Cuisine &amp; maison</span>
+    </a>
+    <a href="#zuki">Zuki 🐱</a>
+    <a href="#climatizzazione">A/C</a>
+    <a href="#preferiti">
+      <span class="it">I nostri preferiti</span><span class="en">Our favourites</span><span class="fr">Nos favoris</span>
+    </a>
+    <a href="#check">Check-in/out</a>
+    <a href="#documenti">
+      <span class="it">Documenti</span><span class="en">Documents</span><span class="fr">Documents</span>
+    </a>
+    <a href="#manuali">
+      <span class="it">Manuali</span><span class="en">Manuals</span><span class="fr">Manuels</span>
+    </a>
+    <a href="#torino">Torino</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── Indirizzo + Chi siamo ── -->
+<section class="grid">
+  <div class="card important">
+    <h2>
+      <span class="it">📍 Indirizzo</span>
+      <span class="en">📍 Address</span>
+      <span class="fr">📍 Adresse</span>
+    </h2>
+    <p><strong>Corso Francia 2 TER, 10143 Torino</strong></p>
+    <p class="small">
+      <span class="it">8–10 minuti a piedi dalla stazione Torino Porta Susa</span>
+      <span class="en">8–10 min walk from Torino Porta Susa station</span>
+      <span class="fr">8–10 min à pied de la gare de Torino Porta Susa</span>
+    </p>
+    <a class="bigbtn orangebtn" href="https://www.google.com/maps/search/?api=1&query=Corso+Francia+2+TER,+10143+Torino" target="_blank" rel="noopener">Google Maps</a>
+  </div>
+  <div class="card">
+    <h2>
+      <span class="it">👨‍👩‍👦 Chi siamo</span>
+      <span class="en">👨‍👩‍👦 Who we are</span>
+      <span class="fr">👨‍👩‍👦 Qui sommes-nous</span>
+    </h2>
+    <p>
+      <span class="it">Siamo <strong>Andrea</strong> (48), <strong>Bianca</strong> (40), <strong>Edoardo</strong> (7) e il nostro bebè <strong>Filippo</strong>, nato nel 2025. Abbiamo anche un gatto, <strong>Zuki</strong>, che potrebbe essere presente durante il soggiorno.</span>
+      <span class="en">We are <strong>Andrea</strong> (48), <strong>Bianca</strong> (40), <strong>Edoardo</strong> (7) and our baby <strong>Filippo</strong>, born in 2025. We also have a cat, <strong>Zuki</strong>, who may be around during your stay.</span>
+      <span class="fr">Nous sommes <strong>Andrea</strong> (48), <strong>Bianca</strong> (40), <strong>Edoardo</strong> (7) et notre bébé <strong>Filippo</strong>, né en 2025. Nous avons aussi un chat, <strong>Zuki</strong>, qui pourrait être présent pendant votre séjour.</span>
+    </p>
+    <img class="photo" src="assets/image8.jpeg" alt="Famiglia Bonelli" style="margin-top:8px">
+  </div>
+</section>
+
+<!-- ── Contatti ── -->
+<section id="contatti" class="card">
+  <h2>
+    <span class="it">📞 Contatti host</span>
+    <span class="en">📞 Host contacts</span>
+    <span class="fr">📞 Contacts de l'hôte</span>
+  </h2>
+  <p>
+    <span class="it">Non esitate a farci sapere quando siete arrivati e se c'è qualcosa di cui avete bisogno!</span>
+    <span class="en">Feel free to let us know when you arrive and if there's anything you need during your stay!</span>
+    <span class="fr">N'hésitez pas à nous faire savoir à votre arrivée et s'il y a quelque chose dont vous avez besoin !</span>
+  </p>
+  <div class="grid">
+    <div>
+      <h3>Andrea</h3>
+      <p>
+        <a class="bigbtn" href="tel:+393886478786">
+          <span class="it">Chiama Andrea</span><span class="en">Call Andrea</span><span class="fr">Appeler Andrea</span>
+        </a>
+        <br><strong>+39 388 6478786</strong>
+      </p>
+      <img class="qr" src="assets/image4.png" alt="QR Andrea">
+      <p class="small">
+        <span class="it">Inquadrando il QR chiami direttamente</span>
+        <span class="en">Scan QR to call directly</span>
+        <span class="fr">Scannez le QR pour appeler directement</span>
+      </p>
+    </div>
+    <div>
+      <h3>Bianca</h3>
+      <p>
+        <a class="bigbtn" href="tel:+393283050452">
+          <span class="it">Chiama Bianca</span><span class="en">Call Bianca</span><span class="fr">Appeler Bianca</span>
+        </a>
+        <br><strong>+39 328 3050452</strong>
+      </p>
+      <img class="qr" src="assets/image6.png" alt="QR Bianca">
+      <p class="small">
+        <span class="it">Inquadrando il QR chiami direttamente</span>
+        <span class="en">Scan QR to call directly</span>
+        <span class="fr">Scannez le QR pour appeler directement</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── WiFi ── -->
+<section id="wifi" class="grid">
+  <div class="card ok">
+    <h2>📶 Wi‑Fi</h2>
+    <p>
+      <span class="it">Potete accedere al Wi‑Fi inquadrando il QR code o inserendo le credenziali manualmente.</span>
+      <span class="en">Access the Wi‑Fi by scanning the QR code or entering credentials manually.</span>
+      <span class="fr">Accédez au Wi‑Fi en scannant le code QR ou en saisissant les identifiants manuellement.</span>
+    </p>
+    <p>
+      <strong>SSID:</strong> Bonelli_Guest<br>
+      <strong>Password:</strong> welcome!
+    </p>
+  </div>
+  <div class="card" style="display:flex;align-items:center;justify-content:center;">
+    <img src="assets/image10.png" alt="QR Wi-Fi" style="width:180px;height:180px;border-radius:12px;border:1px solid var(--line);">
+  </div>
+</section>
+
+<!-- ── Accesso ── -->
+<section id="accesso" class="card important">
+  <h2>
+    <span class="it">🔑 Accesso, chiavi e antifurto</span>
+    <span class="en">🔑 Access, keys &amp; alarm</span>
+    <span class="fr">🔑 Accès, clés et alarme</span>
+  </h2>
+
+  <p>
+    <span class="it">Vi lasceremo un mazzo di chiavi all'ingresso. Se al check‑in non saremo presenti, vi apriremo da remoto. <strong>L'antifurto deve essere inserito ogni volta che lasciate l'appartamento incustodito.</strong> Prima di attivarlo, assicuratevi che tutte le finestre siano chiuse.</span>
+    <span class="en">We will leave a set of keys at the entrance. If we are not present at check‑in, we will open the door remotely. <strong>The alarm must be activated every time you leave the apartment unattended.</strong> Before activating, make sure all windows are closed.</span>
+    <span class="fr">Nous laisserons un trousseau de clés à l'entrée. Si nous ne sommes pas présents à l'arrivée, nous ouvrirons la porte à distance. <strong>L'alarme doit être activée chaque fois que vous quittez l'appartement sans surveillance.</strong> Avant l'activation, assurez-vous que toutes les fenêtres sont fermées.</span>
+  </p>
+
+  <div class="grid">
+    <div>
+      <h3>
+        <span class="it">▶ Video: inserire l'antifurto (ON)</span>
+        <span class="en">▶ Video: activating the alarm (ON)</span>
+        <span class="fr">▶ Vidéo : activer l'alarme (ON)</span>
+      </h3>
+      <video controls preload="metadata" poster="assets/image11.png">
+        <source src="assets/videos/antifurto_on.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div>
+      <h3>
+        <span class="it">▶ Video: disinserire l'antifurto (OFF)</span>
+        <span class="en">▶ Video: deactivating the alarm (OFF)</span>
+        <span class="fr">▶ Vidéo : désactiver l'alarme (OFF)</span>
+      </h3>
+      <video controls preload="metadata" poster="assets/image11.png">
+        <source src="assets/videos/antifurto_off.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <div>
+      <h3>
+        <span class="it">Procedura antifurto</span>
+        <span class="en">Alarm procedure</span>
+        <span class="fr">Procédure d'alarme</span>
+      </h3>
+      <ol>
+        <li>
+          <span class="it">Chiudere la porta.</span>
+          <span class="en">Close the door.</span>
+          <span class="fr">Fermez la porte.</span>
+        </li>
+        <li>
+          <span class="it">Attivare la tastiera premendo un tasto qualsiasi.</span>
+          <span class="en">Activate the keypad by pressing any button.</span>
+          <span class="fr">Activez le clavier en appuyant sur n'importe quelle touche.</span>
+        </li>
+        <li>
+          <span class="it"><strong>Luce 1</strong> = allarme inserito &nbsp;|&nbsp; <strong>Luce 2</strong> = disinserito</span>
+          <span class="en"><strong>Light 1</strong> = alarm on &nbsp;|&nbsp; <strong>Light 2</strong> = alarm off</span>
+          <span class="fr"><strong>Voyant 1</strong> = alarme activée &nbsp;|&nbsp; <strong>Voyant 2</strong> = désactivée</span>
+        </li>
+        <li>
+          <span class="it">Avvicinare il <strong>TAG NFC</strong> (attaccato alle chiavi) nella zona in alto sopra i numeri.</span>
+          <span class="en">Hold the <strong>NFC tag</strong> (attached to the keys) near the upper area above the numbers.</span>
+          <span class="fr">Approchez le <strong>tag NFC</strong> (attaché aux clés) de la zone supérieure au-dessus des chiffres.</span>
+        </li>
+        <li>
+          <span class="it">Premere <strong>9</strong> per inserire / <strong>10</strong> per disinserire.</span>
+          <span class="en">Press <strong>9</strong> to activate / <strong>10</strong> to deactivate.</span>
+          <span class="fr">Appuyez sur <strong>9</strong> pour activer / <strong>10</strong> pour désactiver.</span>
+        </li>
+      </ol>
+      <p>
+        <span class="it">✅ <strong>Quando si inserisce l'antifurto, la porta si chiude automaticamente a chiave.</strong></span>
+        <span class="en">✅ <strong>When the alarm activates, the door locks automatically.</strong></span>
+        <span class="fr">✅ <strong>Lorsque l'alarme est activée, la porte se verrouille automatiquement.</strong></span>
+      </p>
+    </div>
+    <div>
+      <img class="photo" src="assets/image11.png" alt="Schema tastiera antifurto">
+    </div>
+  </div>
+</section>
+
+<!-- ── Regole ── -->
+<section id="regole" class="card danger">
+  <h2>
+    <span class="it">📋 Regole principali</span>
+    <span class="en">📋 House rules</span>
+    <span class="fr">📋 Règles de la maison</span>
+  </h2>
+
+  <p>
+    <span class="it">Speriamo che possiate vivere Torino e la nostra casa con la stessa serenità con cui la viviamo ogni giorno. In casa ci sono tutte le nostre cose: vi faremo spazio per le vostre. Grazie per il rispetto!</span>
+    <span class="en">We hope you'll enjoy Turin and our home with the same comfort we experience every day. The apartment contains all our belongings — we'll make room for yours. Thank you for your care!</span>
+    <span class="fr">Nous espérons que vous profiterez de Turin et de notre maison avec la même sérénité que nous y vivons. L'appartement contient toutes nos affaires — nous ferons de la place pour les vôtres. Merci pour votre respect !</span>
+  </p>
+
+  <div class="grid3" style="margin-top:12px">
+    <div>
+      <p>🚭 <strong><span class="it">Vietato fumare</span><span class="en">No smoking</span><span class="fr">Interdiction de fumer</span></strong></p>
+      <p class="small">
+        <span class="it">In appartamento, sui balconi e terrazze — incluse sigarette elettroniche. Solo in strada.</span>
+        <span class="en">Inside, on balconies and terraces — including e-cigarettes. Outside only.</span>
+        <span class="fr">À l'intérieur, sur les balcons et terrasses — y compris les cigarettes électroniques. Uniquement dans la rue.</span>
+      </p>
+    </div>
+    <div>
+      <p>🐾 <strong><span class="it">Animali non ammessi</span><span class="en">No pets</span><span class="fr">Animaux non admis</span></strong></p>
+      <p class="small">
+        <span class="it">Non è possibile portare animali domestici in appartamento.</span>
+        <span class="en">Pets are not allowed in the apartment.</span>
+        <span class="fr">Les animaux domestiques ne sont pas autorisés.</span>
+      </p>
+    </div>
+    <div>
+      <p>👟 <strong><span class="it">Scarpe fuori</span><span class="en">No shoes inside</span><span class="fr">Chaussures à retirer</span></strong></p>
+      <p class="small">
+        <span class="it">Vi chiediamo di non indossare scarpe in casa, per proteggere il parquet. Pantofole o calzini ok.</span>
+        <span class="en">Please remove shoes to protect the parquet. Slippers or socks are welcome.</span>
+        <span class="fr">Merci de ne pas porter de chaussures pour protéger le parquet. Chaussons ou chaussettes bienvenus.</span>
+      </p>
+    </div>
+    <div>
+      <p>🌙 <strong><span class="it">Orari del silenzio</span><span class="en">Quiet hours</span><span class="fr">Heures de silence</span></strong></p>
+      <p class="small">
+        <span class="it">22:00–7:00 e 13:00–15:00 (riposo dei vicini)</span>
+        <span class="en">22:00–7:00 and 13:00–15:00 (neighbours' rest)</span>
+        <span class="fr">22h00–7h00 et 13h00–15h00 (repos des voisins)</span>
+      </p>
+    </div>
+    <div>
+      <p>🪟 <strong><span class="it">Uscendo di casa</span><span class="en">When leaving</span><span class="fr">En sortant</span></strong></p>
+      <p class="small">
+        <span class="it">Chiudere finestre e porte, spegnere luci e climatizzazione, inserire antifurto.</span>
+        <span class="en">Close windows and doors, turn off lights and AC, activate the alarm.</span>
+        <span class="fr">Fermer fenêtres et portes, éteindre lumières et clim, activer l'alarme.</span>
+      </p>
+    </div>
+    <div>
+      <p>🛁 <strong><span class="it">Lenzuola &amp; asciugamani</span><span class="en">Linens &amp; towels</span><span class="fr">Draps &amp; serviettes</span></strong></p>
+      <p class="small">
+        <span class="it">Se possibile, portate i vostri. In alternativa: <strong>22 €/set matrimoniale</strong> (lenzuola + asciugamani).</span>
+        <span class="en">If possible, bring your own. Otherwise: <strong>€22/double set</strong> (linens + towels).</span>
+        <span class="fr">Si possible, apportez les vôtres. Sinon : <strong>22 €/set double</strong> (draps + serviettes).</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Cucina & Casa ── -->
+<section id="cucina">
+  <div class="grid">
+    <div class="card">
+      <h2>
+        <span class="it">🍳 Cucina</span>
+        <span class="en">🍳 Kitchen</span>
+        <span class="fr">🍳 Cuisine</span>
+      </h2>
+      <p>
+        <span class="it">Potete usare le apparecchiature e cucinare. Vi chiediamo attenzione al parquet: soprattutto con olio e fritture usate il tappeto da cucina per proteggere il pavimento dagli schizzi.</span>
+        <span class="en">You are welcome to use all kitchen equipment. Please take care of the parquet floor — use the kitchen mat when frying or using oil to prevent splashes.</span>
+        <span class="fr">Vous pouvez utiliser tous les équipements. Veillez au parquet — utilisez le tapis de cuisine lors des fritures pour éviter les éclaboussures.</span>
+      </p>
+      <h3>
+        <span class="it">📺 TV e streaming</span>
+        <span class="en">📺 TV &amp; streaming</span>
+        <span class="fr">📺 TV &amp; streaming</span>
+      </h3>
+      <p>
+        <span class="it">Potete usare la TV e accedere alle vostre piattaforme streaming personali (Netflix, Amazon, Disney+ ecc.). Vi chiediamo di <strong>disconnettervi dai vostri account prima del check-out</strong>.</span>
+        <span class="en">You can use the TV and access your personal streaming accounts (Netflix, Amazon, Disney+ etc.). Please <strong>log out of your accounts before check-out</strong>.</span>
+        <span class="fr">Vous pouvez utiliser la TV et accéder à vos plateformes de streaming (Netflix, Amazon, Disney+ etc.). Merci de <strong>vous déconnecter de vos comptes avant le départ</strong>.</span>
+      </p>
+    </div>
+    <div class="card">
+      <h2>
+        <span class="it">🌡️ Climatizzazione e riscaldamento</span>
+        <span class="en">🌡️ AC &amp; heating</span>
+        <span class="fr">🌡️ Climatisation &amp; chauffage</span>
+      </h2>
+      <p>
+        <span class="it">La climatizzazione è disponibile <strong>solo dal 1 giugno al 31 agosto</strong>. Il riscaldamento è centralizzato e non è regolabile individualmente — d'inverno la casa è comunque calda (21–23°C).</span>
+        <span class="en">Air conditioning is available <strong>from June 1st to August 31st only</strong>. Heating is centrally managed and cannot be individually adjusted — the apartment stays warm in winter (21–23°C).</span>
+        <span class="fr">La climatisation est disponible <strong>du 1er juin au 31 août uniquement</strong>. Le chauffage est collectif et non réglable individuellement — l'appartement reste chaud en hiver (21–23°C).</span>
+      </p>
+
+      <h3>
+        <span class="it">⚡ Impianto elettrico</span>
+        <span class="en">⚡ Electrical system</span>
+        <span class="fr">⚡ Système électrique</span>
+      </h3>
+      <p>
+        <span class="it">Se si accendono troppi elettrodomestici (es. phon + forno, o forno + lavatrice) può saltare il contatore nell'armadio vicino all'ingresso. Per riarmarlo: <strong>alzare l'interruttore</strong>. Poi riaccendere anche il boiler (vedi sotto).</span>
+        <span class="en">If too many appliances run simultaneously (e.g., hairdryer + oven, or oven + washing machine), the fuse in the cupboard near the entrance may trip. To reset: <strong>flip the switch up</strong>. Then restart the boiler (see below).</span>
+        <span class="fr">Si trop d'appareils fonctionnent simultanément (ex. sèche-cheveux + four, ou four + machine à laver), le compteur dans le placard près de l'entrée peut se déclencher. Pour le réinitialiser : <strong>relever l'interrupteur</strong>. Redémarrer ensuite la chaudière (voir ci-dessous).</span>
+      </p>
+
+      <h3>
+        <span class="it">🚿 Acqua calda</span>
+        <span class="en">🚿 Hot water</span>
+        <span class="fr">🚿 Eau chaude</span>
+      </h3>
+      <p>
+        <span class="it">Se va via la corrente, il boiler a gas sul balcone esterno vicino al bagno si spegne. Va riacceso a mano premendo il pulsante <strong>ON/OFF</strong>.</span>
+        <span class="en">If the power goes out, the gas boiler on the exterior balcony near the bathroom shuts off. Restart it manually by pressing the <strong>ON/OFF</strong> button.</span>
+        <span class="fr">En cas de coupure, la chaudière à gaz sur le balcon extérieur près de la salle de bain s'éteint. Redémarrez-la manuellement en appuyant sur le bouton <strong>ON/OFF</strong>.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <h2>
+        <span class="it">🧺 Lavatrice e asciugatrice</span>
+        <span class="en">🧺 Washing machine &amp; dryer</span>
+        <span class="fr">🧺 Lave-linge &amp; sèche-linge</span>
+      </h2>
+      <p>
+        <span class="it">Vi chiediamo di <strong>non utilizzare questi elettrodomestici</strong>, o in caso di necessità di chiederci in anticipo via messaggio.</span>
+        <span class="en">Please <strong>do not use these appliances</strong>, or ask us in advance via message if needed.</span>
+        <span class="fr">Merci de <strong>ne pas utiliser ces appareils</strong>, ou demandez-nous à l'avance par message si nécessaire.</span>
+      </p>
+    </div>
+    <div class="card">
+      <h2>
+        <span class="it">🗑️ Raccolta differenziata</span>
+        <span class="en">🗑️ Waste separation</span>
+        <span class="fr">🗑️ Tri des déchets</span>
+      </h2>
+      <ul>
+        <li>
+          <span class="it"><strong>Carta / Plastica / Vetro-Lattine / Indifferenziata</strong> → contenitore sul balcone vicino alla cucina</span>
+          <span class="en"><strong>Paper / Plastic / Glass-Cans / Non-recyclable</strong> → bin on the balcony near the kitchen</span>
+          <span class="fr"><strong>Papier / Plastique / Verre-Canettes / Non recyclable</strong> → bac sur le balcon près de la cuisine</span>
+        </li>
+        <li>
+          <span class="it"><strong>Organico</strong> → contenitore sotto il lavello</span>
+          <span class="en"><strong>Organic</strong> → bin under the sink</span>
+          <span class="fr"><strong>Organique</strong> → bac sous l'évier</span>
+        </li>
+      </ul>
+      <p>
+        <span class="it">Prima del check-out buttate almeno l'organico nei contenitori in strada. All'ingresso troverete la <strong>card per aprire i contenitori</strong> — lasciatela sempre all'ingresso.</span>
+        <span class="en">Before check-out please dispose of at least the organic waste in the street bins. At the entrance you'll find the <strong>card to open the street bins</strong> — please always leave it there.</span>
+        <span class="fr">Avant le départ, merci de jeter au moins les déchets organiques dans les conteneurs en rue. À l'entrée vous trouverez la <strong>carte pour ouvrir les conteneurs</strong> — laissez-la toujours à l'entrée.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2>
+      <span class="it">🧹 Pulizia</span>
+      <span class="en">🧹 Cleaning</span>
+      <span class="fr">🧹 Nettoyage</span>
+    </h2>
+    <p>
+      <span class="it">Vi chiediamo di lasciare l'appartamento pulito e in ordine come lo avete trovato. Avendo un bambino piccolo, per noi è importante prevedere una pulizia approfondita. In caso di scambi non simultanei, chiediamo un contributo di <strong>50–80 €</strong> per la pulizia.</span>
+      <span class="en">Please leave the apartment clean and tidy as you found it. As we have a young baby, a thorough cleaning is important to us. For non-simultaneous exchanges, we ask for a contribution of <strong>€50–80</strong> for cleaning.</span>
+      <span class="fr">Merci de laisser l'appartement propre et bien rangé comme vous l'avez trouvé. Ayant un jeune bébé, un nettoyage approfondi est important. Pour les échanges non simultanés, nous demandons une contribution de <strong>50–80 €</strong>.</span>
+    </p>
+
+    <h3>
+      <span class="it">⚠️ Danni accidentali</span>
+      <span class="en">⚠️ Accidental damage</span>
+      <span class="fr">⚠️ Dommages accidentels</span>
+    </h3>
+    <p>
+      <span class="it">Nessuno danneggia le cose intenzionalmente. Se dovesse succedere qualcosa, vi saremmo grati se ci informaste subito: mandate foto e descrizione via WhatsApp o email a <a href="mailto:andrea.bonelli.ab@icloud.com">andrea.bonelli.ab@icloud.com</a>.</span>
+      <span class="en">No one intentionally damages things — accidents happen. If something breaks, please let us know immediately: send photos and a description via WhatsApp or email to <a href="mailto:andrea.bonelli.ab@icloud.com">andrea.bonelli.ab@icloud.com</a>.</span>
+      <span class="fr">Personne n'endommage intentionnellement les choses — les accidents arrivent. Si quelque chose se casse, merci de nous en informer immédiatement : photos et description via WhatsApp ou email à <a href="mailto:andrea.bonelli.ab@icloud.com">andrea.bonelli.ab@icloud.com</a>.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── Zuki ── -->
+<section id="zuki" class="card ok">
+  <h2>🐱 Zuki</h2>
+  <p>
+    <span class="it">Il nostro gatto Zuki potrebbe essere presente durante il soggiorno. Ecco un breve video che mostra <strong>dove e come dargli da mangiare</strong>.</span>
+    <span class="en">Our cat Zuki may be around during your stay. Here's a short video showing <strong>where and how to feed him</strong>.</span>
+    <span class="fr">Notre chat Zuki pourrait être présent pendant votre séjour. Voici une courte vidéo montrant <strong>où et comment le nourrir</strong>.</span>
+  </p>
+  <video controls preload="metadata">
+    <source src="assets/videos/zuki_food.mp4" type="video/mp4">
+  </video>
+</section>
+
+<!-- ── Climatizzazione ── -->
+<section id="climatizzazione" class="card info">
+  <h2>
+    <span class="it">❄️ Aria condizionata</span>
+    <span class="en">❄️ Air conditioning</span>
+    <span class="fr">❄️ Climatisation</span>
+  </h2>
+
+  <h3>
+    <span class="it">Impianto centralizzato Airzone</span>
+    <span class="en">Airzone central system</span>
+    <span class="fr">Système central Airzone</span>
+  </h3>
+  <p>
+    <span class="it">La maggior parte dell'appartamento è climatizzata tramite l'impianto centralizzato <strong>Airzone</strong>, controllabile dal termostato a muro. Nel video trovate la procedura per accenderlo, spegnerlo e impostare la temperatura nelle varie zone. Ricordatevi che il climatizzatore è utilizzabile solo dal <strong>1 giugno al 31 agosto</strong> (vedi sezione "Cucina &amp; casa").</span>
+    <span class="en">Most of the apartment is air-conditioned via the central <strong>Airzone</strong> system, controlled from the wall thermostat. The video below shows how to turn it on/off and set the temperature for each zone. Remember the AC can only be used from <strong>June 1st to August 31st</strong> (see "Kitchen &amp; home" section).</span>
+    <span class="fr">La majeure partie de l'appartement est climatisée via le système central <strong>Airzone</strong>, contrôlé depuis le thermostat mural. La vidéo ci-dessous montre comment l'allumer, l'éteindre et régler la température par zone. La climatisation n'est utilisable que du <strong>1er juin au 31 août</strong> (voir section « Cuisine &amp; maison »).</span>
+  </p>
+  <video controls preload="metadata">
+    <source src="assets/videos/airzone.mp4" type="video/mp4">
+  </video>
+
+  <h3 style="margin-top:18px">
+    <span class="it">Monosplit in mansarda</span>
+    <span class="en">Mansard mono-split unit</span>
+    <span class="fr">Climatiseur mono-split sous les combles</span>
+  </h3>
+  <p>
+    <span class="it">La mansarda è dotata di un <strong>climatizzatore monosplit indipendente</strong>, con telecomando dedicato (modello standard) che trovate in stanza. Si accende e si regola normalmente: tasto ON/OFF, modalità freddo/caldo (fiocco di neve / sole), e freccette per la temperatura.</span>
+    <span class="en">The attic room has its own <strong>independent mono-split AC unit</strong>, with a standard remote control located in the room. Use it as usual: ON/OFF button, cooling/heating mode (snowflake / sun icon), and arrows to adjust temperature.</span>
+    <span class="fr">La mansarde dispose de son propre <strong>climatiseur mono-split indépendant</strong>, avec une télécommande standard se trouvant dans la pièce. Utilisation classique : bouton ON/OFF, mode froid/chaud (flocon / soleil), et flèches pour régler la température.</span>
+  </p>
+</section>
+
+<!-- ── I nostri preferiti ── -->
+<section id="preferiti" class="card">
+  <h2>
+    <span class="it">⭐ I nostri posti preferiti</span>
+    <span class="en">⭐ Our favourite places</span>
+    <span class="fr">⭐ Nos endroits favoris</span>
+  </h2>
+  <h3 style="margin-top:18px">
+    <span class="it">🏠 Vicino a casa</span>
+    <span class="en">🏠 Near the apartment</span>
+    <span class="fr">🏠 Près de l'appartement</span>
+  </h3>
+  <p class="small">
+    <span class="it">Tutti a pochi minuti a piedi da Corso Francia 2 TER — perfetti per la vita di tutti i giorni.</span>
+    <span class="en">All just a few minutes' walk from Corso Francia 2 TER — perfect for everyday life.</span>
+    <span class="fr">Tous à quelques minutes à pied de Corso Francia 2 TER — parfaits pour le quotidien.</span>
+  </p>
+  <table class="table">
+    <tr>
+      <th><span class="it">Locale</span><span class="en">Place</span><span class="fr">Lieu</span></th>
+      <th><span class="it">Indirizzo</span><span class="en">Address</span><span class="fr">Adresse</span></th>
+      <th><span class="it">Note</span><span class="en">Notes</span><span class="fr">Notes</span></th>
+    </tr>
+    <tr><td>Carrefour Market</td><td>Via S. Donato, 11</td><td><span class="it">Supermercato 24/7</span><span class="en">Supermarket 24/7</span><span class="fr">Supermarché 24h/24</span></td></tr>
+    <tr><td><span class="it">Farmacia</span><span class="en">Pharmacy</span><span class="fr">Pharmacie</span></td><td>C.so Francia, 1bis</td><td><span class="it">Lun–Ven 8–21, Sab 9–13 e 15:30–19:30</span><span class="en">Mon–Fri 8am–9pm, Sat 9am–1pm &amp; 3:30–7:30pm</span><span class="fr">Lun–Ven 8h–21h, Sam 9h–13h et 15h30–19h30</span></td></tr>
+    <tr><td>Bar Sicily</td><td>Via Luigi Cibrario, 17</td><td><span class="it">Granité siciliane</span><span class="en">Sicilian granitas</span><span class="fr">Granités siciliens</span></td></tr>
+    <tr><td>Pastarell</td><td>Piazza XVIII Dicembre, 3</td><td><span class="it">Specialità napoletane</span><span class="en">Neapolitan specialties</span><span class="fr">Spécialités napolitaines</span></td></tr>
+    <tr><td>Piano 35</td><td>C.so Inghilterra</td><td><span class="it">Vista panoramica sulla città</span><span class="en">Panoramic city view</span><span class="fr">Vue panoramique sur la ville</span></td></tr>
+    <tr><td>Pizzeria da Michi</td><td>Via S. Donato, 38/G</td><td><span class="it">Pizza al padellino (tipica torinese)</span><span class="en">Padellino pizza (Turinese style)</span><span class="fr">Pizza padellino (style turinois)</span></td></tr>
+    <tr><td>Pizzeria Wemà</td><td>Via Giustino Fortunato, 4e</td><td><span class="it">Pizza napoletana</span><span class="en">Neapolitan pizza</span><span class="fr">Pizza napolitaine</span></td></tr>
+    <tr><td>Enoteca Parlapà</td><td>Corso Principe Eugenio, 17</td><td><span class="it">Cucina piemontese</span><span class="en">Piedmontese cuisine</span><span class="fr">Cuisine piémontaise</span></td></tr>
+    <tr><td>Ristorante Cinese</td><td>Via Luigi Cibrario, 9</td><td><span class="it">Anche da asporto</span><span class="en">Takeaway available</span><span class="fr">À emporter disponible</span></td></tr>
+    <tr><td>Ristorante Chen Long</td><td>Via Principi d'Acaja, 35/H</td><td></td></tr>
+    <tr><td>Alberto Marchetti</td><td>Via Principi d'Acaja, 65/D</td><td><span class="it">Una delle migliori gelaterie di Torino</span><span class="en">One of Turin's best gelaterias</span><span class="fr">L'une des meilleures glaceries de Turin</span></td></tr>
+  </table>
+
+  <h3 style="margin-top:18px">
+    <span class="it">✨ Per un'occasione speciale</span>
+    <span class="en">✨ For a special occasion</span>
+    <span class="fr">✨ Pour une occasion spéciale</span>
+  </h3>
+  <p>
+    <span class="it">Qualche indirizzo che amiamo particolarmente a Torino, per un'esperienza un po' più speciale. <strong>Vi consigliamo di prenotare con anticipo</strong>, soprattutto nei weekend.</span>
+    <span class="en">A few addresses we particularly love in Turin, for a slightly more special experience. <strong>We recommend booking in advance</strong>, especially on weekends.</span>
+    <span class="fr">Quelques adresses que nous aimons particulièrement à Turin, pour une expérience un peu plus spéciale. <strong>Nous vous conseillons de réserver à l'avance</strong>, surtout le week-end.</span>
+  </p>
+  <div class="grid" style="margin-top:8px">
+    <div class="card important">
+      <h3>Condividere <span class="badge">★★★</span></h3>
+      <p>
+        <span class="it">Ristorante creativo di alto livello firmato Ferran Adrià (El Bulli) e Federico Zanasi, in un ex stabilimento industriale a Borgo San Paolo. Cucina d'autore, piatti spettacolari e di grande creatività: un'esperienza gastronomica fuori dal comune.</span>
+        <span class="en">A high-end creative restaurant by Ferran Adrià (El Bulli) and Federico Zanasi, set in a former industrial building in Borgo San Paolo. Signature cuisine with spectacular, highly creative dishes — a truly special dining experience.</span>
+        <span class="fr">Restaurant créatif haut de gamme signé Ferran Adrià (El Bulli) et Federico Zanasi, dans un ancien site industriel de Borgo San Paolo. Cuisine d'auteur, plats spectaculaires et très créatifs : une expérience gastronomique hors du commun.</span>
+      </p>
+      <p class="small">
+        <span class="it">💶 Fascia prezzo: <strong>alta</strong>, menù degustazione ~80–150 € a persona.</span>
+        <span class="en">💶 Price range: <strong>high-end</strong>, tasting menus ~€80–150 per person.</span>
+        <span class="fr">💶 Gamme de prix : <strong>élevée</strong>, menus dégustation ~80–150 € par personne.</span>
+      </p>
+      <p class="small">
+        <span class="it">📅 <strong>Prenotazione obbligatoria e con largo anticipo</strong> — è uno dei ristoranti più richiesti di Torino.</span>
+        <span class="en">📅 <strong>Booking required, well in advance</strong> — one of Turin's most sought-after restaurants.</span>
+        <span class="fr">📅 <strong>Réservation obligatoire et bien à l'avance</strong> — l'un des restaurants les plus prisés de Turin.</span>
+      </p>
+      <a class="bigbtn orangebtn" href="https://maps.app.goo.gl/QnhkZkTbWU8LrmDq5" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+
+    <div class="card">
+      <h3>Ristorante Consorzio</h3>
+      <p>
+        <span class="it">Cucina piemontese stagionale rivisitata in chiave moderna, vicino al centro storico e alla Mole Antonelliana. Ambiente curato e accogliente, ottima selezione di vini naturali.</span>
+        <span class="en">Seasonal Piedmontese cuisine with a modern twist, near the historic centre and the Mole Antonelliana. Cosy, well-curated atmosphere with a great selection of natural wines.</span>
+        <span class="fr">Cuisine piémontaise de saison revisitée de façon moderne, près du centre historique et de la Mole Antonelliana. Cadre soigné et chaleureux, belle sélection de vins naturels.</span>
+      </p>
+      <p class="small">
+        <span class="it">💶 Fascia prezzo: <strong>media</strong>, ~35–50 € a persona (escluso vino).</span>
+        <span class="en">💶 Price range: <strong>mid-range</strong>, ~€35–50 per person (excluding wine).</span>
+        <span class="fr">💶 Gamme de prix : <strong>moyenne</strong>, ~35–50 € par personne (vin non compris).</span>
+      </p>
+      <p class="small">
+        <span class="it">📅 Consigliata la prenotazione, soprattutto la sera e nei weekend.</span>
+        <span class="en">📅 Booking recommended, especially in the evening and on weekends.</span>
+        <span class="fr">📅 Réservation conseillée, surtout le soir et le week-end.</span>
+      </p>
+      <a class="bigbtn orangebtn" href="https://maps.app.goo.gl/tUSwYQpC5SjCfcNn7" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+
+    <div class="card">
+      <h3>Scannabue</h3>
+      <p>
+        <span class="it">Storica trattoria piemontese nel quartiere di San Salvario: piatti classici e tradizionali (vitello tonnato, agnolotti, brasato), porzioni generose e atmosfera conviviale.</span>
+        <span class="en">A historic Piedmontese trattoria in the San Salvario district: classic, traditional dishes (vitello tonnato, agnolotti, braised beef), generous portions and a lively, convivial atmosphere.</span>
+        <span class="fr">Trattoria piémontaise historique dans le quartier de San Salvario : plats classiques et traditionnels (vitello tonnato, agnolotti, daube), portions généreuses et ambiance conviviale.</span>
+      </p>
+      <p class="small">
+        <span class="it">💶 Fascia prezzo: <strong>media</strong>, ~30–40 € a persona.</span>
+        <span class="en">💶 Price range: <strong>mid-range</strong>, ~€30–40 per person.</span>
+        <span class="fr">💶 Gamme de prix : <strong>moyenne</strong>, ~30–40 € par personne.</span>
+      </p>
+      <p class="small">
+        <span class="it">📅 Molto frequentato: prenotare con qualche giorno di anticipo, soprattutto nei weekend.</span>
+        <span class="en">📅 Very popular: book a few days in advance, especially on weekends.</span>
+        <span class="fr">📅 Très fréquenté : réservez quelques jours à l'avance, surtout le week-end.</span>
+      </p>
+      <a class="bigbtn orangebtn" href="https://maps.app.goo.gl/yE36ype5doevSgm97" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+
+    <div class="card">
+      <h3>Trattoria Carmen</h3>
+      <p>
+        <span class="it">Piccola trattoria a conduzione familiare in zona San Salvario, cucina casalinga piemontese genuina, prezzi onesti e atmosfera informale e genuina.</span>
+        <span class="en">A small family-run trattoria in San Salvario, serving genuine Piedmontese home cooking at honest prices, in an informal and authentic atmosphere.</span>
+        <span class="fr">Petite trattoria familiale dans le quartier de San Salvario, cuisine maison piémontaise authentique, prix honnêtes et ambiance informelle et conviviale.</span>
+      </p>
+      <p class="small">
+        <span class="it">💶 Fascia prezzo: <strong>economica</strong>, ~25–35 € a persona.</span>
+        <span class="en">💶 Price range: <strong>budget-friendly</strong>, ~€25–35 per person.</span>
+        <span class="fr">💶 Gamme de prix : <strong>économique</strong>, ~25–35 € par personne.</span>
+      </p>
+      <p class="small">
+        <span class="it">📅 Locale piccolo: consigliata la prenotazione, specie a cena.</span>
+        <span class="en">📅 Small venue: booking recommended, especially for dinner.</span>
+        <span class="fr">📅 Petit établissement : réservation conseillée, surtout pour le dîner.</span>
+      </p>
+      <a class="bigbtn orangebtn" href="https://maps.app.goo.gl/T1iU9TSmH6ZoF5kC9" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Check-in / Check-out ── -->
+<section id="check" class="grid">
+  <div class="card ok">
+    <h2>
+      <span class="it">✅ Check‑in</span>
+      <span class="en">✅ Check‑in</span>
+      <span class="fr">✅ Arrivée</span>
+    </h2>
+    <p>
+      <span class="it">Disponibile dalle <strong>18:00</strong> del giorno di arrivo, salvo diversi accordi.</span>
+      <span class="en">Available from <strong>6:00 PM</strong> on arrival day, unless otherwise agreed.</span>
+      <span class="fr">Disponible à partir de <strong>18h00</strong> le jour d'arrivée, sauf accord contraire.</span>
+    </p>
+  </div>
+  <div class="card danger">
+    <h2>
+      <span class="it">🚪 Check‑out</span>
+      <span class="en">🚪 Check‑out</span>
+      <span class="fr">🚪 Départ</span>
+    </h2>
+    <p>
+      <span class="it">Liberate l'appartamento entro le <strong>11:00</strong> del giorno di partenza, salvo diversi accordi.</span>
+      <span class="en">Please vacate the apartment by <strong>11:00 AM</strong> on departure day, unless otherwise agreed.</span>
+      <span class="fr">Libérez l'appartement avant <strong>11h00</strong> le jour du départ, sauf accord contraire.</span>
+    </p>
+    <p>
+      <span class="it">Lasciate le chiavi nel contenitore all'entrata o sul tavolo del soggiorno e avvisateci: provvederemo ad inserire l'antifurto da remoto.</span>
+      <span class="en">Leave the keys in the container at the entrance or on the living room table and let us know — we'll activate the alarm remotely.</span>
+      <span class="fr">Laissez les clés dans le conteneur à l'entrée ou sur la table du salon et prévenez-nous — nous activerons l'alarme à distance.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── Documenti legge italiana ── -->
+<section id="documenti" class="card important">
+  <h2>
+    <span class="it">🪪 Documenti richiesti dalla legge italiana</span>
+    <span class="en">🪪 Documents required by Italian law</span>
+    <span class="fr">🪪 Documents requis par la loi italienne</span>
+  </h2>
+  <p>
+    <span class="it">Per adempiere agli obblighi di legge italiani (Art. 109 T.U.L.P.S.) relativi alla comunicazione delle generalità degli ospiti alle autorità di Pubblica Sicurezza, vi chiederemo di inviarci un documento di identità per ciascun ospite tramite <strong>WhatsApp</strong>, prima del vostro arrivo.</span>
+    <span class="en">To comply with Italian legal requirements (Art. 109 T.U.L.P.S.) on guest registration with the Public Security authorities, we will ask you to send us an identity document for each guest via <strong>WhatsApp</strong>, before your arrival.</span>
+    <span class="fr">Afin de respecter les obligations légales italiennes (Art. 109 T.U.L.P.S.) concernant l'enregistrement des voyageurs auprès des autorités, nous vous demanderons de nous envoyer une pièce d'identité pour chaque invité via <strong>WhatsApp</strong>, avant votre arrivée.</span>
+  </p>
+  <p class="small">
+    <span class="it">I dati saranno usati esclusivamente per questo scopo e i documenti saranno cancellati subito dopo l'invio alle autorità.</span>
+    <span class="en">Your data will be used exclusively for this purpose and documents will be deleted immediately after submission to the authorities.</span>
+    <span class="fr">Vos données seront utilisées uniquement à cette fin et les documents seront supprimés immédiatement après la transmission aux autorités.</span>
+  </p>
+</section>
+
+<!-- ── Manuali ── -->
+<section id="manuali" class="card">
+  <h2>
+    <span class="it">📖 Manuali elettrodomestici</span>
+    <span class="en">📖 Appliance manuals</span>
+    <span class="fr">📖 Manuels des appareils</span>
+  </h2>
+  <p>
+    <span class="it">Qui trovate i manuali di: aria condizionata, lavastoviglie, macchina del caffè, piano cottura, lavatrice e asciugatrice.</span>
+    <span class="en">Here you'll find manuals for: air conditioning, dishwasher, coffee machine, cooktop, washing machine and dryer.</span>
+    <span class="fr">Vous trouverez ici les manuels de : climatisation, lave-vaisselle, machine à café, table de cuisson, machine à laver et sèche-linge.</span>
+  </p>
+  <ul class="small">
+    <li><a href="manuali/01 Aria Condizionata.pdf" target="_blank" rel="noopener">📄 <span class="it">Aria condizionata</span><span class="en">Air conditioning</span><span class="fr">Climatisation</span></a></li>
+    <li><a href="manuali/02 Lavastoviglie.pdf" target="_blank" rel="noopener">📄 <span class="it">Lavastoviglie</span><span class="en">Dishwasher</span><span class="fr">Lave-vaisselle</span></a></li>
+    <li><a href="manuali/03 Macchina Caffé.pdf" target="_blank" rel="noopener">📄 <span class="it">Macchina del caffè</span><span class="en">Coffee machine</span><span class="fr">Machine à café</span></a></li>
+    <li>
+      <a href="manuali/04 Piano cottura IT.pdf" target="_blank" rel="noopener">📄 <span class="it">Piano cottura (IT)</span><span class="en">Cooktop (IT)</span><span class="fr">Table de cuisson (IT)</span></a>
+      &nbsp;/&nbsp;
+      <a href="manuali/04 Cooktop EN.pdf" target="_blank" rel="noopener"><span class="it">versione EN</span><span class="en">EN version</span><span class="fr">version EN</span></a>
+    </li>
+    <li><a href="manuali/05 Washing Machine.pdf" target="_blank" rel="noopener">📄 <span class="it">Lavatrice</span><span class="en">Washing machine</span><span class="fr">Machine à laver</span></a></li>
+    <li><a href="manuali/06 Miele Dryer.pdf" target="_blank" rel="noopener">📄 <span class="it">Asciugatrice</span><span class="en">Dryer</span><span class="fr">Sèche-linge</span></a></li>
+    <li><a href="manuali/07 Tattomi - Divano Letto.pdf" target="_blank" rel="noopener">📄 <span class="it">Divano letto</span><span class="en">Sofa bed</span><span class="fr">Canapé-lit</span></a></li>
+    <li><a href="manuali/08 Parcheggi.pdf" target="_blank" rel="noopener">📄 <span class="it">Parcheggi</span><span class="en">Parking</span><span class="fr">Parking</span></a></li>
+  </ul>
+</section>
+
+<!-- ── Torino ── -->
+<section id="torino" class="card">
+  <h2>🏙️ Torino</h2>
+
+  <div class="grid" style="margin-bottom:16px">
+    <div>
+      <h3>
+        <span class="it">🚗 Arrivare in auto</span>
+        <span class="en">🚗 Arriving by car</span>
+        <span class="fr">🚗 Arriver en voiture</span>
+      </h3>
+      <p>
+        <span class="it">Parcheggi sotto casa a pagamento lun–sab. <strong>Domenica e festivi gratuiti.</strong> Tariffe: 1,70 €/h su Corso Francia, 1,50 €/h vie interne. Voucher giornaliero (10–12 €) acquistabile al tabaccaio: <em>C.so Francia 6/D</em>.</span>
+        <span class="en">Parking near the house is paid Mon–Sat. <strong>Free on Sundays and public holidays.</strong> Rates: €1.70/h on Corso Francia, €1.50/h on side streets. Daily voucher (€10–12) at the tobacconist: <em>C.so Francia 6/D</em>.</span>
+        <span class="fr">Parking payant lun–sam. <strong>Gratuit le dimanche et les jours fériés.</strong> Tarifs : 1,70 €/h sur Corso Francia, 1,50 €/h rues adjacentes. Bon journalier (10–12 €) chez le buraliste : <em>C.so Francia 6/D</em>.</span>
+      </p>
+
+      <p class="small" style="background:#fff8e1;border-radius:8px;padding:10px;border:1px solid #f2dfb3">
+        <span class="it">⚠️ <strong>Non lasciate oggetti di valore in vista all'interno dell'auto</strong> (navigatori, borse, bagagli, ecc.), come in qualsiasi grande città.</span>
+        <span class="en">⚠️ <strong>Do not leave valuables visible inside the car</strong> (sat-navs, bags, luggage, etc.), as in any big city.</span>
+        <span class="fr">⚠️ <strong>Ne laissez pas d'objets de valeur visibles dans la voiture</strong> (GPS, sacs, bagages, etc.), comme dans toute grande ville.</span>
+        <br>
+        <span class="it">Se la vostra auto ha una <strong>targa estera</strong>, può essere più soggetta ad attenzioni indesiderate: valutate l'opzione di un <strong>parcheggio custodito</strong>, soprattutto per soste lunghe o notturne. Alcune opzioni nelle vicinanze:</span>
+        <span class="en">If your car has a <strong>foreign license plate</strong>, it may attract more unwanted attention: consider using a <strong>guarded car park</strong>, especially for long or overnight stays. A few options nearby:</span>
+        <span class="fr">Si votre voiture porte une <strong>plaque étrangère</strong>, elle peut attirer davantage l'attention : envisagez un <strong>parking surveillé</strong>, surtout pour les longs séjours ou la nuit. Quelques options à proximité :</span>
+      </p>
+      <ul class="small">
+        <li><strong>Parcheggio Corso Bolzano – Porta Susa</strong> — <span class="it">vicino alla stazione Porta Susa</span><span class="en">near Porta Susa station</span><span class="fr">près de la gare de Porta Susa</span> — <a href="https://www.bestinparking.com/it/it/garage/parcheggio-corso-bolzano-stazione-porta-susa" target="_blank" rel="noopener"><span class="it">apri sito</span><span class="en">open site</span><span class="fr">ouvrir le site</span></a></li>
+        <li><strong>FS Park Torino Porta Susa</strong> — <span class="it">parcheggio della stazione Porta Susa</span><span class="en">Porta Susa station car park</span><span class="fr">parking de la gare de Porta Susa</span> — <a href="https://www.fspark.it/it/parcheggi/nord-ovest-italia/torino-porta-susa.html" target="_blank" rel="noopener"><span class="it">apri sito</span><span class="en">open site</span><span class="fr">ouvrir le site</span></a></li>
+        <li><strong>Autorimessa Susa</strong> — <span class="it">soste giornaliere o settimanali su prenotazione</span><span class="en">daily or weekly stays by reservation</span><span class="fr">séjours journaliers ou hebdomadaires sur réservation</span> — <a href="https://sites.google.com/view/autorimessa-susa-torino/home" target="_blank" rel="noopener"><span class="it">apri sito</span><span class="en">open site</span><span class="fr">ouvrir le site</span></a></li>
+        <li><strong>MyParking Porta Susa</strong> — <span class="it">motore di ricerca e prenotazione parcheggi in zona</span><span class="en">search &amp; booking engine for parking in the area</span><span class="fr">moteur de recherche et réservation de parkings dans le quartier</span> — <a href="https://www.myparking.it/parcheggio_stazione_susa_torino.php" target="_blank" rel="noopener"><span class="it">apri sito</span><span class="en">open site</span><span class="fr">ouvrir le site</span></a></li>
+      </ul>
+      <p class="small">
+        <span class="it">Vi consigliamo comunque di verificare disponibilità e tariffe aggiornate su Google Maps prima di partire.</span>
+        <span class="en">We recommend checking current availability and rates on Google Maps before you leave.</span>
+        <span class="fr">Nous vous conseillons de vérifier les disponibilités et tarifs actuels sur Google Maps avant votre départ.</span>
+      </p>
+
+      <h3>🚆
+        <span class="it">In treno</span>
+        <span class="en">By train</span>
+        <span class="fr">En train</span>
+      </h3>
+      <p>
+        <span class="it"><strong>Torino Porta Susa</strong> a 8–10 minuti a piedi.</span>
+        <span class="en"><strong>Torino Porta Susa</strong> is 8–10 min on foot.</span>
+        <span class="fr"><strong>Torino Porta Susa</strong> est à 8–10 min à pied.</span>
+      </p>
+
+      <h3>✈️
+        <span class="it">In aereo</span>
+        <span class="en">By plane</span>
+        <span class="fr">En avion</span>
+      </h3>
+      <p>
+        <span class="it">Dall'aeroporto di <strong>Torino Caselle</strong> a Porta Susa circa 35–40 minuti.</span>
+        <span class="en">From <strong>Torino Caselle airport</strong> to Porta Susa approx. 35–40 minutes.</span>
+        <span class="fr">De l'aéroport de <strong>Torino Caselle</strong> à Porta Susa environ 35–40 minutes.</span>
+      </p>
+    </div>
+    <div>
+      <img class="photo" src="assets/image12.png" alt="Mappa zona Corso Francia">
+    </div>
+  </div>
+
+  <h3>
+    <span class="it">🗺️ Punti di riferimento vicini</span>
+    <span class="en">🗺️ Nearby places</span>
+    <span class="fr">🗺️ Points de repère à proximité</span>
+  </h3>
+  <table class="table">
+    <tr>
+      <th><span class="it">Servizio</span><span class="en">Place</span><span class="fr">Lieu</span></th>
+      <th><span class="it">Indirizzo</span><span class="en">Address</span><span class="fr">Adresse</span></th>
+      <th><span class="it">Note</span><span class="en">Notes</span><span class="fr">Notes</span></th>
+    </tr>
+    <tr>
+      <td>Carrefour Market</td>
+      <td><a href="https://www.google.com/maps/search/?api=1&query=Carrefour+Market+Via+San+Donato+11+Torino" target="_blank" rel="noopener">Via S. Donato, 11</a></td>
+      <td>
+        <span class="it">Supermercato 24/7</span>
+        <span class="en">Supermarket 24/7</span>
+        <span class="fr">Supermarché 24h/24</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="it">Farmacia</span>
+        <span class="en">Pharmacy</span>
+        <span class="fr">Pharmacie</span>
+      </td>
+      <td><a href="https://www.google.com/maps/search/?api=1&query=Farmacia+Corso+Francia+1bis+Torino" target="_blank" rel="noopener">C.so Francia, 1bis</a></td>
+      <td>
+        <span class="it">Lun–Ven 8–21, Sab 9–13 e 15:30–19:30</span>
+        <span class="en">Mon–Fri 8am–9pm, Sat 9am–1pm &amp; 3:30–7:30pm</span>
+        <span class="fr">Lun–Ven 8h–21h, Sam 9h–13h et 15h30–19h30</span>
+      </td>
+    </tr>
+    <tr><td>Bar Sicily</td><td><a href="https://www.google.com/maps/search/?api=1&query=Bar+Sicily+Via+Luigi+Cibrario+17+Torino" target="_blank" rel="noopener">Via Luigi Cibrario, 17</a></td><td><span class="it">Granité siciliane</span><span class="en">Sicilian granitas</span><span class="fr">Granités siciliens</span></td></tr>
+    <tr><td>Pastarell</td><td><a href="https://www.google.com/maps/search/?api=1&query=Pastarell+Piazza+XVIII+Dicembre+3+Torino" target="_blank" rel="noopener">Piazza XVIII Dicembre, 3</a></td><td><span class="it">Specialità napoletane</span><span class="en">Neapolitan specialties</span><span class="fr">Spécialités napolitaines</span></td></tr>
+    <tr><td>Piano 35</td><td><a href="https://www.google.com/maps/search/?api=1&query=Piano+35+Corso+Inghilterra+Torino" target="_blank" rel="noopener">C.so Inghilterra</a></td><td><span class="it">Vista panoramica sulla città</span><span class="en">Panoramic city view</span><span class="fr">Vue panoramique sur la ville</span></td></tr>
+    <tr><td>Pizzeria da Michi</td><td><a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+da+Michi+Via+San+Donato+38G+Torino" target="_blank" rel="noopener">Via S. Donato, 38/G</a></td><td><span class="it">Pizza al padellino (tipica torinese)</span><span class="en">Padellino pizza (Turinese style)</span><span class="fr">Pizza padellino (style turinois)</span></td></tr>
+    <tr><td>Pizzeria Wemà</td><td><a href="https://www.google.com/maps/search/?api=1&query=Pizzeria+Wem%C3%A0+Via+Giustino+Fortunato+4e+Torino" target="_blank" rel="noopener">Via Giustino Fortunato, 4e</a></td><td><span class="it">Pizza napoletana</span><span class="en">Neapolitan pizza</span><span class="fr">Pizza napolitaine</span></td></tr>
+    <tr><td>Enoteca Parlapà</td><td><a href="https://www.google.com/maps/search/?api=1&query=Enoteca+Parlap%C3%A0+Corso+Principe+Eugenio+17+Torino" target="_blank" rel="noopener">Corso Principe Eugenio, 17</a></td><td><span class="it">Cucina piemontese</span><span class="en">Piedmontese cuisine</span><span class="fr">Cuisine piémontaise</span></td></tr>
+    <tr><td><span class="it">Ristorante Cinese</span><span class="en">Chinese Restaurant</span><span class="fr">Restaurant chinois</span></td><td><a href="https://www.google.com/maps/search/?api=1&query=Ristorante+Cinese+Via+Luigi+Cibrario+9+Torino" target="_blank" rel="noopener">Via Luigi Cibrario, 9</a></td><td><span class="it">Anche da asporto</span><span class="en">Takeaway available</span><span class="fr">À emporter disponible</span></td></tr>
+    <tr><td>Ristorante Chen Long</td><td><a href="https://www.google.com/maps/search/?api=1&query=Ristorante+Chen+Long+Via+Principi+d%27Acaja+35H+Torino" target="_blank" rel="noopener">Via Principi d'Acaja, 35/H</a></td><td></td></tr>
+    <tr><td>Alberto Marchetti</td><td><a href="https://www.google.com/maps/search/?api=1&query=Alberto+Marchetti+Via+Principi+d%27Acaja+65D+Torino" target="_blank" rel="noopener">Via Principi d'Acaja, 65/D</a></td><td><span class="it">Una delle migliori gelaterie di Torino</span><span class="en">One of Turin's best gelaterias</span><span class="fr">L'une des meilleures glaceries de Turin</span></td></tr>
+  </table>
+
+  <p style="margin-top:16px">
+    <a class="bigbtn" href="https://turismotorino.org/it" target="_blank" rel="noopener">Visit Torino IT</a>
+    <a class="bigbtn" href="https://turismotorino.org/en" target="_blank" rel="noopener">Visit Torino EN</a>
+    <a class="bigbtn" href="https://turismotorino.org/fr" target="_blank" rel="noopener">Visit Torino FR</a>
+    <a class="bigbtn orangebtn" href="https://abbonamentomusei.it/" target="_blank" rel="noopener">Abbonamento Musei</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>Casa Bonelli – Torino</strong><br>
+  <span class="it">Guest portal per ospiti HomeExchange</span>
+  <span class="en">HomeExchange guest portal</span>
+  <span class="fr">Portail pour les invités HomeExchange</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(l) {
+    document.body.className = 'lang-' + l;
+    document.documentElement.lang = l;
+    ['it','en','fr'].forEach(function(lng) {
+      document.getElementById('btn-' + lng).classList.toggle('active', lng === l);
+    });
+    try { localStorage.setItem('lang', l); } catch(e) {}
+  }
+  (function() {
+    var saved;
+    try { saved = localStorage.getItem('lang'); } catch(e) {}
+    if (saved && ['it','en','fr'].indexOf(saved) > -1) setLang(saved);
+  })();
+</script>
+</body>
+</html>
